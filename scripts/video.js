@@ -71,8 +71,8 @@ const removActiveClass = () =>{
 }
 
 
-const loadVideos = async () =>{
-    const res = await fetch("https://openapi.programming-hero.com/api/phero-tube/videos");
+const loadVideos = async (searchData ="") =>{
+    const res = await fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title= ${searchData}`);
     const data = await res.json();
     
     loadDisplayVideos(data.videos)
@@ -147,6 +147,9 @@ const loadDisplayVideos = (videos) =>{
     })
 }
 
+const searchData = document.getElementById('inputFild').addEventListener("keyup",(e)=>{
+    loadVideos(e.target.value)
+})
 
 
 
